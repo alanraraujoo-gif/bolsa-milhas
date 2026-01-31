@@ -1044,7 +1044,15 @@
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 const formData = new FormData(form);
-                const email = formData.get('email');
+                const email = document.getElementById('email-input').value;
+    
+    await fetch('https://script.google.com/macros/s/AKfycby0jXfIRSP6f4ax1hnrPOFgZEa0qghAOW7-1hzOdOhZnYdyRnxn4Puf2uOKIRqx7hxc1w/exec', {
+        method: 'POST',
+        body: new URLSearchParams({ email })
+    });
+    
+    document.getElementById('success-message').classList.add('show');
+    e.target.reset();
                 
                 // Add loading state
                 form.classList.add('loading');
